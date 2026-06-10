@@ -135,9 +135,9 @@
     </form>
     
 
-    <script type="module"> import getIp from 'https://unpkg.com/ip-leak?module'
+    <script type="module">
 
-    let realIp= await getIp()
+
 
         window.addEventListener("pageshow", function (event) {
     if (event.persisted) {
@@ -145,7 +145,7 @@
     }
 });
 
-          function enviar(){
+       window.enviar=   function enviar(){
             fetch("/login", {
   method: "POST",
   headers: {
@@ -154,7 +154,6 @@
   body: JSON.stringify({
     usuario: document.getElementById("usuario").value,
     contraseña: document.getElementById("contraseña").value,
-    ip: realIp
   })
 }).then(function(res){
     
