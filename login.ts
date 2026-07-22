@@ -6,7 +6,7 @@ dotenv.config()
 const app= express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-app.set('trust proxy', 1)
+app.set('trust proxy', true)
 
 let limiter= rateLimit({ windowMs: 15 * 60 * 1000, // ventana de 15 minutos
     limit: 5,                   // máximo 5 requests por ventana
