@@ -22,7 +22,7 @@ let contraseña=process.env.contrasenia //puedes hallar la contraseña?
 
 app.get("/login",function(req,res){res.sendFile("login.html",{root:import.meta.dirname})})
 
-app.post("/login",limiter,function(req,res){
+app.post("/login",limiter,function(req,res){console.log(req.ip)
     if(req.body.usuario===usuario && req.body.contraseña===contraseña){
     res.send("acceso concedido"); console.log("acceso concedido")
 }
