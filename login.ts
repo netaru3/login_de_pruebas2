@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   req.clientIp =req.headers['x-forwarded-for'],
 
-      console.log("ip del cliente:",req.clienteIp);
+      console.log("ip del cliente:",req.clientIp);
   
   next();
 })
