@@ -6,13 +6,26 @@ dotenv.config()
 const app= express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-app.set('trust proxy', true)
+
+
+app.use((req, res, next) => {
+  req.clientIp =req.headers['x-forwarded-for'],
+
+      console.log("ip del cliente:",req.clienteIp
+  
+  next();
+})
 
 let limiter= rateLimit({ windowMs: 15 * 60 * 1000, // ventana de 15 minutos
     limit: 5,                   // máximo 5 requests por ventana
     message: { error: 'Demasiados intentos, esperá 15 minutos' },
     standardHeaders: true,
     legacyHeaders: false,
+
+    keyGenerator: (req) => {
+    // Usar nuestra IP segura
+    return req.clientIp;
+  },
 })
 
 let usuario="netaru3"
