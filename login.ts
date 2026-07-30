@@ -41,4 +41,4 @@ app.post("/login",limiter,function(req,res){console.log(req.ip)
 }
 else{res.send("error")}})
 
-app.listen(3000,function(){console.log("conectado")})
+app.listen(process.env.port || 3000,function(){console.log("conectado")})
